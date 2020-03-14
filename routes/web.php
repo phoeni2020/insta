@@ -22,3 +22,4 @@ Route::get('/p/create','posts@create');
 Route::post('/p','posts@store');
 Route::get('/p/{post}','posts@show');
 Route::get('/profile/{id}/edit','proiflecontroller@edit');
+//Route::patch('/profile/{id}',);
