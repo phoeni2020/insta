@@ -9,10 +9,11 @@
         <div class="col-9 pt-5 ">
             <div class="d-flex justify-content-between align-baseline" >
             <div><h2>{{$data->username}}</h2></div>
-            <a href="#">add new post</a>
+            <a href="/p/create">add new post</a>
             </div>
+            <a href="/profile/{{$data->id}}/edit">edit profile</a>
             <div class="d-flex">
-                <div class="pr-5"><strong>php native</strong></div>
+                <div class="pr-5"><strong>{{$data->posts->count()}} </strong> Posts</div>
                 <div class="pr-5"><strong>OOP=>MVC</strong></div>
                 <div class="pr-5"><strong>Laravel FrameWork</strong></div>
             </div>
@@ -22,9 +23,9 @@
         </div>
     </div>
     <div class="row pt-5">
-        <div class="col-4"><img src="/laptop.jpg" class="w-100" alt=""></div>
-        <div class="col-4"><img src="/iphone.jpg" class="w-100" alt=""></div>
-        <div class="col-4"><img src="/workstaion.jpg" class="w-100" alt=""></div>
+        @foreach($data->posts as $post)
+        <div class="col-4 pb-4"><a href="/p/{{$post->id}}"><img src="/storage/{{$post->image}}" class="w-100" alt=""></a></div>
+        @endforeach
     </div>
 </div>
 @endsection
