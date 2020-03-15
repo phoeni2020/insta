@@ -18,8 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'myprofilecontroller@index')->name('home');
 Route::get('/profile/{user}', 'proiflecontroller@profile')->name('profile.show');
+Route::get('/profile/edit/{user}','proiflecontroller@edit')->name('profile.edit');
+Route::patch('/profile/{userid}','proiflecontroller@update')->name('profile.update');
 Route::get('/p/create','posts@create');
 Route::post('/p','posts@store');
 Route::get('/p/{post}','posts@show');
-Route::get('/profile/{id}/edit','proiflecontroller@edit');
-//Route::patch('/profile/{id}',);
+
