@@ -17,12 +17,15 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', 'myprofilecontroller@index')->name('home');
+//profile Routs section
 Route::get('/profile/create', 'proiflecontroller@create')->name('profile.create');
-Route::post('/profile/save/{id}','proiflecontroller@save');
-Route::get('/profile/{user}', 'proiflecontroller@profile')->name('profile.show');
+Route::post('/profile/save/{id}','proiflecontroller@save')->name('profile.save');
 Route::get('/profile/edit/{user}','proiflecontroller@edit')->name('profile.edit');
 Route::patch('/profile/{userid}','proiflecontroller@update')->name('profile.update');
-Route::get('/p/create','posts@create');
-Route::post('/p','posts@store');
-Route::get('/p/{post}','posts@show');
+Route::get('/profile/{user}', 'proiflecontroller@profile')->name('profile.show');
+
+//posts Routs section
+Route::get('/posts/create','posts@create')->name('post.create');
+Route::post('/posts/store','posts@store')->name('post.store');
+Route::get('/posts/{post}','posts@show')->name('post.show');
 

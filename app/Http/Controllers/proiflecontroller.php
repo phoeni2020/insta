@@ -49,7 +49,7 @@ class proiflecontroller extends Controller
      }
      public function update(User $userid)
      {
-         if(!($userid->id ==auth()->id()))
+         if(!($userid->id == auth()->id()))
          {
              exit("USER ID LOGGED IN MUST BE LIKE ID OF UPDATED USER");
          }
@@ -59,7 +59,7 @@ class proiflecontroller extends Controller
             'link'=>'url',
             'image'=>['required','image']
         ]);
-        $userid->profile->update($data);
+         auth()->user()->profile->update($data);
         return redirect("/profile/{$userid->id}");
      }
 }

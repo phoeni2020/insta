@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <form action="/p" method="post" enctype="multipart/form-data">
+        <form action="/posts/store" method="post" enctype="multipart/form-data">
             <div class="row justify-content-center">
                 <div class="col-md-10">
                     <div class="row">
