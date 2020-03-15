@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <form action="/create/profile/{{$user->id}}" method="post" enctype="multipart/form-data">
+        <form action="/profile/save/{{$id}}" method="post" enctype="multipart/form-data">
             <div class="row justify-content-center">
                 <div class="col-md-10">
                     <div class="row">
@@ -23,7 +23,7 @@
                         @enderror
                     </div>
                     <div class="row">
-                        <label for="url" class="col-md-4 col-form-label ">url</label>
+                        <label for="link" class="col-md-4 col-form-label ">url</label>
                         <input id="link" type="text"
                                class="form-control @error('link')
                                    is-invalid @enderror" name="link"
