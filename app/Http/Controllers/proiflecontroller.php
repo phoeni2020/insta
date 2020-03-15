@@ -41,18 +41,12 @@ class proiflecontroller extends Controller
     }
      public function edit(User $user)
      {
-        if(!($user->id ==auth()->id()))
-         {
-             exit("USER ID LOGGED IN MUST BE LIKE ID OF UPDATED USER");
-         }
+         $this->authorize('update',$user->profile());
         return view('profiles/edit',compact('user'));
      }
      public function update(User $userid)
      {
-         if(!($userid->id == auth()->id()))
-         {
-             exit("USER ID LOGGED IN MUST BE LIKE ID OF UPDATED USER");
-         }
+        $this->authorize('update',$userid->profile());
         $data  = request()->validate([
             'title'=>'required',
             'description'=>'required',

@@ -53,7 +53,7 @@ class prorilepolicy
      */
     public function update(User $user, Profile $profile)
     {
-        
+        return $user->id == $profile->user_id;
     }
 
     /**

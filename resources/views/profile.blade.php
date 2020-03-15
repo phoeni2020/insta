@@ -8,9 +8,13 @@
         <div class="col-9 pt-5 ">
             <div class="d-flex justify-content-between align-baseline" >
             <div><h2>{{$user->username}}</h2></div>
-            <a href="/posts/create">add new post</a>
+                @can('update',$user->porfile)
+                    <a href="/posts/create">add new post</a>
+                @endcan
             </div>
+            @can('update',$user->porfile)
             <a href="/profile/edit/{{$user->id}}">edit profile</a>
+            @endcan
             <div class="d-flex">
                 <div class="pr-5"><strong>{{$user->posts->count()}} </strong> Posts</div>
                 <div class="pr-5"><strong>OOP=>MVC</strong></div>
