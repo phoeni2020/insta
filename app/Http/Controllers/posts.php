@@ -41,4 +41,5 @@ class posts extends Controller
     {
         return view('posts.post',['post'=>$post]);
     }
+
 }

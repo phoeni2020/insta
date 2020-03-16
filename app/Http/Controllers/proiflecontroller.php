@@ -1,13 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use \App\User;
 use \App\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Intervention\Image\Facades\Image;
-
 class proiflecontroller extends Controller
 {
      public function create()
@@ -25,7 +23,7 @@ class proiflecontroller extends Controller
             'link'=>''
         ]);
         $imgpath = request('image')->store('uploads','public');
-        $image =Image::make(public_path("storage/{$imgpath}"))->fit(1200,1200);
+        $image =Image::make(public_path("storage/{$imgpath}"))->fit(150,150);
         $image->save();
         auth()->user()->profile()->create([
             'title'=>$data['title'],
@@ -41,19 +39,27 @@ class proiflecontroller extends Controller
     }
      public function edit(User $user)
      {
-         $this->authorize('update',$user->profile());
+         $this->authorize('update',$user->profile);
         return view('profiles/edit',compact('user'));
      }
      public function update(User $userid)
      {
-        $this->authorize('update',$userid->profile());
+        $this->authorize('update',$userid->profile);
         $data  = request()->validate([
             'title'=>'required',
             'description'=>'required',
-            'link'=>'url',
-            'image'=>['required','image']
+            'link'=>'',
+            'image'=>'image'
         ]);
-         auth()->user()->profile->update($data);
+        if(request('image'))
+        {
+            $imgpath = request('image')->store('uploads','public');
+            $image =Image::make(public_path("storage/{$imgpath}"))->fit(1000,1000);
+            $image->save();
+            $imagearr = ['image'=>$imgpath];
+        }
+
+         auth()->user()->profile->update(array_merge($data,$imagearr ?? []));
         return redirect("/profile/{$userid->id}");
      }
 }

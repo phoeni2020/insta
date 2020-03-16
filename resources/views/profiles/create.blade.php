@@ -27,7 +27,7 @@
                         <input id="link" type="text"
                                class="form-control @error('link')
                                    is-invalid @enderror" name="link"
-                               value="{{ old('link') }}" required autocomplete="link"
+                               value="{{ old('link') }}"
                                autofocus>
                         @error('link')
                         <span class="invalid-feedback" role="alert">

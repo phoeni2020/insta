@@ -41,7 +41,7 @@
                         <input id="link" type="text"
                                class="form-control @error('link')
                                    is-invalid @enderror" name="link"
-                               value="{{ old('link') ?? $user->profile->link}}" required autocomplete="link"
+                               value="{{ old('link') ?? $user->profile->link}}"
                                autofocus>
                         @error('link')
                         <span class="invalid-feedback" role="alert">
@@ -54,7 +54,6 @@
                         <input id="image" type="file"
                                class="form-control-file @error('image')
                                    is-invalid @enderror" name="image"
-                               required autocomplete="image"
                                autofocus>
                         @error('image')
                         <span class="invalid-feedback" role="alert">

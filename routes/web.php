@@ -21,8 +21,9 @@ Route::get('/home', 'myprofilecontroller@index')->name('home');
 Route::get('/profile/create', 'proiflecontroller@create')->name('profile.create');
 Route::post('/profile/save/{id}','proiflecontroller@save')->name('profile.save');
 Route::get('/profile/edit/{user}','proiflecontroller@edit')->name('profile.edit');
-Route::patch('/profile/{userid}','proiflecontroller@update')->name('profile.update');
 Route::get('/profile/{user}', 'proiflecontroller@profile')->name('profile.show');
+Route::patch('/profile/{userid}','proiflecontroller@update')->name('profile.update');
+Route::post('/follow/{user}','followscontroller@store')->name('follow.store');
 
 //posts Routs section
 Route::get('/posts/create','posts@create')->name('post.create');
